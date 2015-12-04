@@ -16,16 +16,24 @@ using namespace std;
 //Struct representing nodes in edge list
 struct node
 {
-    struct vertex * adjacent;
+    class vertex * adjacent;
     node * next;
 };
 
 
-struct vertex
+class vertex
 {
-    char * event_name;
-    node * head;
-    node * tail;
+    public:
+        vertex();
+        ~vertex();
+        int add_edge(char friend_name[]);
+        int destroy_wrapper();
+
+    private:   
+        char * event_name;
+        node * head;
+        node * tail;
+        int destroy_edges(node * head);
 };
 
 
@@ -35,9 +43,9 @@ class graph
     public:
         graph(int size);
         ~graph();
-        int add_edge(node * to_add);
+        //int add_edge(node * to_add);
         int display_path(char friend_name[]);
-        int destroy_edges(node * head);
+        //int destroy_edges(node * head);
 
     private:
         int list_size; 

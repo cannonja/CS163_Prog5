@@ -20,15 +20,45 @@ graph::~graph()
     int result;
 
     for (int i = 0; i < list_size; ++i)
-        result = destroy_edges(adj_list[i].head);
+        result = adj_list[i].destroy_wrapper();
 
     delete [] adj_list;
     adj_list = NULL;
+    list_size = 0;
 }
 
+
+//Constructor
+vertex::vertex()
+{
+    event_name = NULL;
+    head = NULL;
+    tail = NULL;
+}
+
+
+//Destructor
+vertex::~vertex()
+{
+    int result;
+        
+    delete [] event_name;
+    result = destroy_wrapper();
+    head = NULL;
+    tail = NULL;
+}
+
+
+//Wrapper for vertex::destroy_edges
+int vertex::destroy_wrapper()
+{
+    return destroy_edges(head);
+}
+
+
 //This function takes a pointer to a node and destroys
-//the LLL
-int graph::destroy_edges(node * head)
+//the LLL recursively
+int vertex::destroy_edges(node * head)
 {
     if (!head)
         return 0;
@@ -42,8 +72,6 @@ int graph::destroy_edges(node * head)
 
     return destroy_edges(head -> next);
 }
-
-
 
 
 

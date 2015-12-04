@@ -16,7 +16,7 @@ using namespace std;
 //Struct representing nodes in edge list
 struct node
 {
-    vertex * adjacent;
+    struct vertex * adjacent;
     node * next;
 };
 
@@ -36,9 +36,11 @@ class graph
         graph(int size);
         ~graph();
         int add_edge(node * to_add);
-
+        int display_path(char friend_name[]);
+        int destroy_edges(node * head);
 
     private:
+        int list_size; 
         vertex * adj_list;
 };
 

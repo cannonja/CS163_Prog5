@@ -13,10 +13,14 @@
 
 using namespace std;
 
+int read_info(char * & event_name);
+
 //Struct representing nodes in edge list
 struct node
 {
     class vertex * adjacent;
+    char * event;
+    int num_days;
     node * next;
 };
 
@@ -24,16 +28,18 @@ struct node
 class vertex
 {
     public:
-        vertex();
-        ~vertex();
-        int add_edge(char friend_name[]);
-        int destroy_wrapper();
+        vertex();//done
+        ~vertex();//done
+        int set_name(char to_add[]);//done
+        int add_edge();
+        int destroy_edges();//done
 
     private:   
-        char * event_name;
+        char * friend_name;
         node * head;
         node * tail;
-        int destroy_edges(node * head);
+        int add_edge(node * head);
+        int destroy_edges(node * head);//done
 };
 
 
@@ -41,10 +47,10 @@ class vertex
 class graph
 {
     public:
-        graph(int size);
-        ~graph();
+        graph(int size);//done
+        ~graph();//done
         //int add_edge(node * to_add);
-        int display_path(char friend_name[]);
+        int display_path(char event_name[]);
         //int destroy_edges(node * head);
 
     private:

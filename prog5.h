@@ -32,15 +32,15 @@ class vertex
         ~vertex();//done
         int set_name(char to_add[]);//done
         int compare_name(char to_compare[]);//done
-        int add_edge(char to[], vertex * to_addr);
+        int add_edge(char to[], vertex * to_addr);//done
         int destroy_edges();//done
+        void display();//For testing
 
     private:   
         char * friend_name;
         node * head;
         node * tail;
-        int add_edge(char to[], vertex * to_addr, node * head);
-        int add_edge(node * head);
+        int add_edge(char to[], vertex * to_addr, node * head);//done
         int destroy_edges(node * head);//done
 };
 
@@ -51,7 +51,7 @@ class graph
     public:
         graph(int size);//done
         ~graph();//done
-        int add_connection(char from[], char to[]);
+        int add_connection(char from[], char to[]);//done
         int display_path(char event_name[]);
         //int destroy_edges(node * head);
 

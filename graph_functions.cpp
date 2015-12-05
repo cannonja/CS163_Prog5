@@ -109,7 +109,7 @@ int vertex::set_name(char to_add[])
         delete [] friend_name;
 
     friend_name = new char[strlen(to_add) + 1];
-    strcmp(friend_name, to_add);
+    strcpy(friend_name, to_add);
 
     return 1;
 }
@@ -120,6 +120,7 @@ int vertex::compare_name(char to_compare[])
 {
     if (strcmp(friend_name, to_compare) == 0)
         return 1;
+
     return 0;
 }
 
@@ -141,8 +142,19 @@ int vertex::add_edge(char to[], vertex * to_addr, node * head)
     char * event_name;
     
     if (!head)
-        return 0;
+    {
+        head = new node;
+        tail = head;
+        head -> adjacent = to_addr; 
+        head -> num_days = read_info(friend_name, to, event_name);
+        head -> event = new char[strlen(event_name) + 1];
+        strcpy(head -> event, event_name);
+        head -> next = NULL;
+        
+        return 1;
+    }
 
+    /*
     if (!head -> next)
     {
         head -> next = new node;
@@ -154,6 +166,7 @@ int vertex::add_edge(char to[], vertex * to_addr, node * head)
         
         return 1;
     }
+    */
 
     return add_edge(to, to_addr, head -> next);
 }
@@ -175,8 +188,14 @@ int vertex::destroy_edges(node * head)
     
     if (!head -> next)
     {
-        delete head -> next;
-        head -> next = NULL;
+        head -> adjacent = NULL;
+        
+        delete [] head -> event;
+        head -> event = NULL;
+
+        delete head;
+        head = NULL;
+        
         return 1;
     }
 
@@ -184,7 +203,24 @@ int vertex::destroy_edges(node * head)
 }
 
 
+//This function displays the data members of the vertex for testing
+void vertex::display()
+{
+    node * current = head;
 
+    cout << "Name: " << friend_name << endl;
+    cout << "Chain is:\n";
+        while (current)
+        {
+            cout << current -> event << ", " << current -> num_days << endl;
+            current = current -> next;
+        }
+    cout << "Tail: ";
+    if (!tail)
+        cout << "NULL" << endl;
+    else
+        cout << tail -> event << ", " << tail -> num_days << endl;
+}
 
 
 

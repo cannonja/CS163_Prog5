@@ -13,7 +13,17 @@
 
 int main()
 {
-      return 0;
+    char person[10] = "Jonny";
+    char person2[10] = "Jane";
+    char * event;
+    int days;
+
+    days = read_info(person, person2, event);
+    cout << "Num days = " << days << endl;
+    cout << "Event = " << event << endl;
+    
+
+    return 0;
 }
 
 

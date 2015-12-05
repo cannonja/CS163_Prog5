@@ -13,7 +13,7 @@
 
 using namespace std;
 
-int read_info(char * & event_name);
+int read_info(char from_name[], char to_name[], char * & event_name);//done
 
 //Struct representing nodes in edge list
 struct node
@@ -31,13 +31,15 @@ class vertex
         vertex();//done
         ~vertex();//done
         int set_name(char to_add[]);//done
-        int add_edge();
+        int compare_name(char to_compare[]);//done
+        int add_edge(char to[], vertex * to_addr);
         int destroy_edges();//done
 
     private:   
         char * friend_name;
         node * head;
         node * tail;
+        int add_edge(char to[], vertex * to_addr, node * head);
         int add_edge(node * head);
         int destroy_edges(node * head);//done
 };
@@ -49,7 +51,7 @@ class graph
     public:
         graph(int size);//done
         ~graph();//done
-        //int add_edge(node * to_add);
+        int add_connection(char from[], char to[]);
         int display_path(char event_name[]);
         //int destroy_edges(node * head);
 
@@ -57,7 +59,6 @@ class graph
         int list_size; 
         vertex * adj_list;
 };
-
 
 
 

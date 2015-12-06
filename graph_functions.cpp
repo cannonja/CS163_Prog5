@@ -137,7 +137,7 @@ int vertex::add_edge(char to[], vertex * to_addr)
 
 //This function takes a c-string, a pointer to a vertex, and a pointer to
 //a LLL, then adds an edge to the adjacency list
-int vertex::add_edge(char to[], vertex * to_addr, node * head)
+int vertex::add_edge(char to[], vertex * to_addr, node * & head)
 {
     char * event_name;
     
@@ -212,7 +212,10 @@ void vertex::display()
     cout << "Chain is:\n";
         while (current)
         {
-            cout << current -> event << ", " << current -> num_days << endl;
+            cout << current -> event << ", " << current -> num_days;
+            cout << ", points at ";
+            current -> adjacent -> display();
+            cout << endl;
             current = current -> next;
         }
     cout << "Tail: ";

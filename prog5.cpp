@@ -26,19 +26,34 @@ int main()
     */
 
     //Test vertex class==========================================================
-    vertex test_v, test_v2;
-    char name[20] = "Jonny";
-    char name2[20] = "Jane";
-
-    cout << test_v.set_name(name) << endl;
-    test_v.display();
-    cout << test_v.compare_name(name) << endl;
-    cout << test_v.compare_name(name2) << endl;
-    cout << "\n\n\n\n";
-
-    cout << test_v.add_edge(name2, &test_v2) << endl;
-    cout << "Success" << endl;
+    vertex test_v[5];//Declare 5 test vertices
+    vertex * addresses[5];
+    char name[5][15] = {"Jonny", "Jane", "Dick", "Harry", "Darlene"};//Names
     
+    
+    //Poplulate addresses
+    for (int i = 0; i < 5; ++i)
+        addresses[i] = &test_v[i];
+    
+    //Set names and display
+    for (int i = 0; i < 5; ++i)
+    {
+        //Test set_name
+        cout << test_v[i].set_name(name[i]) << endl;
+        //Test display
+        test_v[i].display();
+    }
+    
+    //Test compare_name
+    cout << test_v[0].compare_name(name[0]) << endl;
+    cout << test_v[0].compare_name(name[1]) << endl;
+    cout << "\n\n";
+
+    //Test add edge
+    if (test_v[0].add_edge(name[1], addresses[1]))
+        cout << "Add success" << endl;
+    test_v[0].display();
+
     return 0;
 }
 

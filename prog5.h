@@ -40,7 +40,7 @@ class vertex
         char * friend_name;
         node * head;
         node * tail;
-        int add_edge(char to[], vertex * to_addr, node * head);//done
+        int add_edge(char to[], vertex * to_addr, node * & head);//done
         int destroy_edges(node * head);//done
 };
 

@@ -182,10 +182,15 @@ int vertex::destroy_edges()
 
 //This function takes a pointer to a node and destroys
 //the LLL recursively
-int vertex::destroy_edges(node * head)
+int vertex::destroy_edges(node * & head)
 {
+    int result;
+    
     if (!head)
         return 0;
+    tail = NULL;
+
+    result =  destroy_edges(head -> next);
     
     if (!head -> next)
     {
@@ -199,8 +204,8 @@ int vertex::destroy_edges(node * head)
         
         return 1;
     }
-
-    return destroy_edges(head -> next);
+    
+    return result;
 }
 
 

@@ -50,8 +50,10 @@ int main()
     //cout << result << endl;
     //cout << "\n\n";
 
-    //Test add edge
-    for (int i = 0; i < 4; ++i)
+    //Test add_edge
+    
+    cout << "Adding edges:\n";
+    for (int i = 0; i < 2; ++i)
     {
         int j = (i % 5) + 1;
 
@@ -62,14 +64,22 @@ int main()
         test_v[0].display();
         cout << endl;
     }
-
-    
+    /*
     cout << "The adjacency list is below:\n\n";
     for (int i = 0; i < 5; ++i)
     {
         test_v[i].display();
         cout << endl;
     }
+    */
+    
+    //Test destroy
+    cout << "Destroying edges:\n";
+    if (test_v[0].destroy_edges())
+        cout << "Destroy successfull" << endl;
+    test_v[0].display();
+    cout << endl;
+
 
     return 0;
 }

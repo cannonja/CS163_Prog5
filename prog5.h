@@ -42,9 +42,8 @@ class vertex
         node * head;
         node * tail;
         int add_edge(char to[], vertex * to_addr, node * & head);//done
-        int destroy_edges(node * head);//done
+        int destroy_edges(node * & head);//done
 };
-
 
 
 class graph

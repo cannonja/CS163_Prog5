@@ -24,6 +24,7 @@ int read_info(char from_name[], char to_name[], char * & event_name)
 
     cout << "How long ago was the event?  Enter the number of days: ";
     cin >> days;
+    cin.ignore(100, '\n');
 
     return days;
 }
@@ -35,7 +36,7 @@ graph::graph(int size)
     adj_list = new vertex[list_size];
 }
 
-//Destructor
+//Destructokr
 graph::~graph()
 {
     int result;
@@ -209,15 +210,23 @@ void vertex::display()
     node * current = head;
 
     cout << "Name: " << friend_name << endl;
-    cout << "Chain is:\n";
-        while (current)
-        {
-            cout << current -> event << ", " << current -> num_days;
-            cout << ", points at ";
-            current -> adjacent -> display();
+    
+    cout << "Chain is: ";
+    if (!head)
+        cout << "NULL\n";
+    while (current)
+    {
+        cout << "(" << current -> event << ", " << current -> num_days;
+        cout << ", points at ";
+        current -> adjacent -> display_name();
+        cout << ")";
+        current = current -> next;
+        if (current)
+            cout << "; ";
+        else
             cout << endl;
-            current = current -> next;
-        }
+    }
+    
     cout << "Tail: ";
     if (!tail)
         cout << "NULL" << endl;
@@ -226,9 +235,11 @@ void vertex::display()
 }
 
 
-
-
-
+//This function displays the name of the vertex
+void vertex::display_name()
+{
+    cout << friend_name;
+}
 
 
 

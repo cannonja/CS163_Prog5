@@ -29,30 +29,47 @@ int main()
     vertex test_v[5];//Declare 5 test vertices
     vertex * addresses[5];
     char name[5][15] = {"Jonny", "Jane", "Dick", "Harry", "Darlene"};//Names
-    
+    int result;   
     
     //Poplulate addresses
     for (int i = 0; i < 5; ++i)
         addresses[i] = &test_v[i];
     
-    //Set names and display
-    for (int i = 0; i < 5; ++i)
+    //Test set_names and display
+    for (int i= 0; i < 5; ++i)
     {
-        //Test set_name
-        cout << test_v[i].set_name(name[i]) << endl;
-        //Test display
-        test_v[i].display();
+        result = test_v[i].set_name(name[i]);
+        //cout << result << endl;
+        //test_v[i].display();
     }
     
     //Test compare_name
-    cout << test_v[0].compare_name(name[0]) << endl;
-    cout << test_v[0].compare_name(name[1]) << endl;
-    cout << "\n\n";
+    result = test_v[0].compare_name(name[0]);
+    //cout << result << endl;
+    result = test_v[0].compare_name(name[1]);
+    //cout << result << endl;
+    //cout << "\n\n";
 
     //Test add edge
-    if (test_v[0].add_edge(name[1], addresses[1]))
-        cout << "Add success" << endl;
-    test_v[0].display();
+    for (int i = 0; i < 4; ++i)
+    {
+        int j = (i % 5) + 1;
+
+        result = test_v[0].add_edge(name[j], addresses[j]);
+        //if (result)
+            //cout << "\nAdd success" << endl;
+        cout << endl;
+        test_v[0].display();
+        cout << endl;
+    }
+
+    
+    cout << "The adjacency list is below:\n\n";
+    for (int i = 0; i < 5; ++i)
+    {
+        test_v[i].display();
+        cout << endl;
+    }
 
     return 0;
 }

@@ -35,6 +35,7 @@ class vertex
         int add_edge(char to[], vertex * to_addr);//done
         int destroy_edges();//done
         void display();//For testing
+        void display_name();//For testing
 
     private:   
         char * friend_name;
